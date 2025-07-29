@@ -6,7 +6,6 @@ from dns import dnssec, name
 
 
 class NSEC3Hash(unittest.TestCase):
-
     DATA = [
         # Source: https://tools.ietf.org/html/rfc5155#appendix-A
         ("example", "aabbccdd", 12, "0p9mhaveqvm6t7vbl5lop2u3t2rp3tom", 1),
@@ -56,10 +55,10 @@ class NSEC3Hash(unittest.TestCase):
             "aabbccdd",
             12,
             "0p9mhaveqvm6t7vbl5lop2u3t2rp3tom",
-            dnssec.NSEC3Hash.SHA1
+            dnssec.NSEC3Hash.SHA1,
         ),
         ("example", "aabbccdd", 12, "0p9mhaveqvm6t7vbl5lop2u3t2rp3tom", "SHA1"),
-        ("example", "aabbccdd", 12, "0p9mhaveqvm6t7vbl5lop2u3t2rp3tom", "sha1")
+        ("example", "aabbccdd", 12, "0p9mhaveqvm6t7vbl5lop2u3t2rp3tom", "sha1"),
     ]
 
     def test_hash_function(self):

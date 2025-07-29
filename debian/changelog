@@ -1,3 +1,185 @@
+dnspython (2.7.0-1) unstable; urgency=medium
+
+  * Team Upload
+  * Use dh-sequence-python3
+  * New upstream version 2.7.0
+  * Mark package Multi-Arch: foreign (Closes: #1078022)
+
+  [ Scott Kitterman ]
+  * Bump standards-version to 4.7.0 without further change
+
+ -- Alexandre Detiste <tchet@debian.org>  Sun, 01 Dec 2024 21:23:40 +0100
+
+dnspython (2.7.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release
+  * Update minimum version requirements
+
+ -- Scott Kitterman <scott@kitterman.com>  Sat, 28 Sep 2024 11:31:31 -0400
+
+dnspython (2.6.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Scott Kitterman <scott@kitterman.com>  Tue, 20 Feb 2024 22:58:35 -0500
+
+dnspython (2.6.0-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * Delete d/p/cryptograph41.patch, fixed upstream
+  * New upstream release, addresses CVE-2023-29483
+
+ -- Scott Kitterman <scott@kitterman.com>  Fri, 16 Feb 2024 15:51:34 -0500
+
+dnspython (2.6.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release
+  * Add d/p/cryptograph41.patch to drop minimum python3-cryptography version
+    to 41 for testing
+
+ -- Scott Kitterman <scott@kitterman.com>  Thu, 15 Feb 2024 18:27:20 -0500
+
+dnspython (2.5.0-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * New upstream release
+  * Set minimum python3-hatchling version to 1.21.0 in Build-Depends
+
+ -- Scott Kitterman <scott@kitterman.com>  Mon, 22 Jan 2024 23:28:32 -0500
+
+dnspython (2.5.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release
+    - Delete previous d/patches, no longer required due to build system changes
+    - Replace build-depend on python3-poetry-core and python3-setuptools with
+      python3-hatchling
+  * Remove obsolete Recommends for python3-requests and
+    python3-requests-toolbelt
+
+ -- Scott Kitterman <scott@kitterman.com>  Sun, 07 Jan 2024 12:02:26 -0500
+
+dnspython (2.4.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Scott Kitterman <scott@kitterman.com>  Fri, 11 Aug 2023 21:35:53 -0400
+
+dnspython (2.4.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * python3-sniffio is a python3-trio Depends, so no need to explicitly
+    require it, remove from Suggests, long description, and d/tests/control
+  * Remove dh_python3 override, dependency specification fixed upstream
+  * Add python3-aioquic to Build-Depends and d/test/control test depends so
+    DNS Over QUIC (DOQ) tests are run
+  * Add mention of DOQ support to package description
+
+ -- Scott Kitterman <scott@kitterman.com>  Fri, 28 Jul 2023 17:20:32 -0400
+
+dnspython (2.4.0-1) unstable; urgency=medium
+
+  * Upload to Unstable
+  * Add needs-internet to restrictions in debian/tests/control
+  * New upstream release
+  * Add python3-httpcore to Build-Depends and debian/tests/control for tests
+    and Recommends for DOH support
+  * Override dh_python3 to add --no-guessing-deps since generated depends are
+    not currently useful
+
+ -- Scott Kitterman <scott@kitterman.com>  Thu, 20 Jul 2023 09:37:43 -0400
+
+dnspython (2.4.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release
+    - Refresh patches
+  * Remove Breaks not required since oldstable
+
+ -- Scott Kitterman <scott@kitterman.com>  Thu, 06 Jul 2023 22:09:07 -0400
+
+dnspython (2.3.0-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * New upstream release
+  * Bump standards-version to 4.6.2 without further change
+  * Add python3-poetry-core and pybuild-plugin-pyproject to build-depends to
+    build using pyproject backend
+  * Add python3-httpx and python3-h2 to Recommends for DNS Over HTTPS (DOH)
+    support and add to build-depends and test depends to support tests
+  * Add suggests for python3-aioquic (preliminary support for DNS Over QUIC
+   (DOQ) if available)
+
+ -- Scott Kitterman <scott@kitterman.com>  Tue, 24 Jan 2023 10:40:24 -0500
+
+dnspython (2.3.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release
+    - Refresh patches
+    - Delete Allow-skipping-test-cases-that-need-Internet-access.patch,
+      0003-Improve-network-checking-812.patch, and
+      0004-tests-Extend-connectivity-check-to-test_async.patch, incorporated
+      upstream
+  * Add python3-cryptography to build-depends to support tests
+
+ -- Scott Kitterman <scott@kitterman.com>  Wed, 11 Jan 2023 12:03:18 -0500
+
+dnspython (2.2.1-2) unstable; urgency=medium
+
+  [ Dan Bungert ]
+  * Team upload
+  * Update test suite to improve network checking
+    (Closes: #1012470, LP: #1976565)
+
+ -- Benjamin Drung <bdrung@ubuntu.com>  Wed, 08 Jun 2022 11:47:10 +0200
+
+dnspython (2.2.1-1) unstable; urgency=medium
+
+  [ Benjamin Drung ]
+  * Team upload
+  * New upstream release
+  * Run test suite during package build (except tests that need Internet)
+  * Run autopkgtest outside the source tree to ensure to run against installed
+    version
+  * Set Rules-Requires-Root: no
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 12 to 13.
+  * Remove constraints unnecessary since buster:
+    + python3-dnspython: Drop versioned constraint on python3-cryptography in
+      Recommends.
+
+ -- Benjamin Drung <bdrung@ubuntu.com>  Mon, 16 May 2022 20:59:36 +0200
+
+dnspython (2.2.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Add upstream patch:
+    - Use_the_version_origin_if_the_zone_doesnt_have_one_yet.patch
+
+ -- Thomas Goirand <zigo@debian.org>  Mon, 24 Jan 2022 13:55:42 +0100
+
+dnspython (2.2.0-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * Update d/watch and delete debian/upstream/signing-file.asc, releases are
+    no longer signed
+  * New upstream release
+  * Bump standards version to 4.6.0 without further change
+  * Override override_dh_auto_test-does-not-check-DEB_BUILD_OPTIONS since the
+    tests aren't actually run
+
+ -- Scott Kitterman <scott@kitterman.com>  Fri, 21 Jan 2022 01:19:08 -0500
+
+dnspython (2.2.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release candidate
+  * Drop debian/patches/0001-add-missing-mx-pickle-test-data.patch, included
+    in new release
+  * Add debian/patches/no-setup-requires.patch since upstream setup_requires
+    conflicts with Debian Python build practices
+  * Delete obsolete debian/source/include-binaries file
+
+ -- Scott Kitterman <scott@kitterman.com>  Fri, 24 Dec 2021 01:33:56 -0500
+
 dnspython (2.1.0-1) unstable; urgency=medium
 
   [ Ondřej Nový ]

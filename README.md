@@ -1,10 +1,10 @@
 # dnspython
 
-[![Build Status](https://travis-ci.org/rthalley/dnspython.svg?branch=master)](https://travis-ci.org/rthalley/dnspython)
+[![Build Status](https://github.com/rthalley/dnspython/actions/workflows/ci.yml/badge.svg)](https://github.com/rthalley/dnspython/actions/)
 [![Documentation Status](https://readthedocs.org/projects/dnspython/badge/?version=latest)](https://dnspython.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/dnspython.svg)](https://badge.fury.io/py/dnspython)
-[![Coverage](https://codecov.io/github/rthalley/dnspython/coverage.svg?branch=master)](https://codecov.io/gh/rthalley/dnspython)
 [![License: ISC](https://img.shields.io/badge/License-ISC-brightgreen.svg)](https://opensource.org/licenses/ISC)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## INTRODUCTION
 
@@ -29,7 +29,7 @@ to facilitate the testing of DNS software.
 
 ## ABOUT THIS RELEASE
 
-This is dnspython 2.1.0.
+This is dnspython 2.7.0.
 Please read
 [What's New](https://dnspython.readthedocs.io/en/stable/whatsnew.html) for
 information about the changes in this release.
@@ -38,37 +38,55 @@ information about the changes in this release.
 
 * Many distributions have dnspython packaged for you, so you should
   check there first.
-* If you have pip installed, you can do `pip install dnspython`
-* If not just download the source file and unzip it, then run
-  `sudo python setup.py install`
-* To install the latest from the master branch, run `pip install git+https://github.com/rthalley/dnspython.git`
+* To use a wheel downloaded from PyPi, run:
 
-If you want to use DNS-over-HTTPS, you must run
+    pip install dnspython
+
+* To install from the source code, go into the top-level of the source code
+  and run:
+
+```
+    pip install --upgrade pip build
+    python -m build
+    pip install dist/*.whl
+```
+
+* To install the latest from the main branch, run `pip install git+https://github.com/rthalley/dnspython.git`
+
+Dnspython's default installation does not depend on any modules other than
+those in the Python standard library.  To use some features, additional modules
+must be installed.  For convenience, pip options are defined for the
+requirements.
+
+If you want to use DNS-over-HTTPS, run
 `pip install dnspython[doh]`.
 
-If you want to use DNSSEC functionality, you must run
+If you want to use DNSSEC functionality, run
 `pip install dnspython[dnssec]`.
 
 If you want to use internationalized domain names (IDNA)
 functionality, you must run
 `pip install dnspython[idna]`
 
-If you want to use the Trio asynchronous I/O package, you must run
+If you want to use the Trio asynchronous I/O package, run
 `pip install dnspython[trio]`.
 
-If you want to use the Curio asynchronous I/O package, you must run
-`pip install dnspython[curio]`.
+If you want to use WMI on Windows to determine the active DNS settings
+instead of the default registry scanning method, run
+`pip install dnspython[wmi]`.
+
+If you want to try the experimental DNS-over-QUIC code, run
+`pip install dnspython[doq]`.
 
 Note that you can install any combination of the above, e.g.:
 `pip install dnspython[doh,dnssec,idna]`
 
 ### Notices
 
-Python 2.x support ended with the release of 1.16.0.  dnspython 2.0.0 and
-later only support Python 3.6 and later.
+Python 2.x support ended with the release of 1.16.0.  Dnspython 2.6.x supports
+Python 3.8 and later, though support for 3.8 ends on October 14, 2024.
+Dnspython 2.7.x supports Python 3.9 and later.  Future support is aligned with the
+lifetime of the Python 3 versions.
 
 Documentation has moved to
 [dnspython.readthedocs.io](https://dnspython.readthedocs.io).
-
-The ChangeLog has been discontinued.  Please see the git history for detailed
-change information.
