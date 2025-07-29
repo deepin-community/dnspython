@@ -15,11 +15,10 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-# $Id: Makefile,v 1.5 2004/03/19 00:17:27 halley Exp $
+import dns.immutable
+import dns.rdtypes.txtbase
 
-PYTHON=python
 
-check: test
-
-test:
-	${PYTHON} ./utest.py
+@dns.immutable.immutable
+class RESINFO(dns.rdtypes.txtbase.TXTBase):
+    """RESINFO record"""
