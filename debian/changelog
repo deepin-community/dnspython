@@ -1,3 +1,12 @@
+dnspython (2.7.0-1deepin2) unstable; urgency=medium
+
+  * fix(cve): CVE-2026-114605 (high) - Limit decompression to a chain
+    length of at most 16 pointers.   Upstream:
+    https://github.com/rthalley/dnspython/commit/b485e460c266540a1a09ca6
+    d8d1d7b685b1d3023.patch
+
+ -- deepin-ci-robot <packages@deepin.org>  Fri, 30 Oct 2026 12:03:00 +0800
+
 dnspython (2.7.0-1deepin1) unstable; urgency=medium
 
   * Rebuild with LTO enabled (dpkg vendor feature optimize/lto).
